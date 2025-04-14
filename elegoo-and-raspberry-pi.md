@@ -46,6 +46,8 @@ Next, you must define the GPIO ports as either inputs or outputs. To control the
 GPIO.setup(22, GPIO.OUT)
 GPIO.output(22, GPIO.HIGH)
 ```
+ When the relay is active, the LED onboard the Eleego module will be bright red. You will also hear the click of the relay as it is reasonably loud. If you do not keep the relay active for reasonable length of time, it won't engage at all so a delay at least is necessary before you deactivate it. It is a solid state device so you need to give it time to switch on and make contact.
+
 Note that if you specify a header pin number that is not a port, you will get an error message when running the Python program. This will help you with debugging.
 
 The other thing to remember is to clean up the GPIO state before exiting the Python program. This is accomplished by the following:
@@ -63,9 +65,9 @@ import RPi.GPIO as GPIO
 import time
 import random
 
-# Define GPIO pin numbers participating in the relay control
+## Define GPIO pin numbers participating in the relay control
 pins = [22, 18, 16, 15, 13]
-# Define GPIO pin numbers wired for relay control but not participating 
+## Define GPIO pin numbers wired for relay control but not participating 
 extras = [12, 11, 7]
 
 ## Set the mode for GPIO reference using the Raspberry Pi header pin numbers
